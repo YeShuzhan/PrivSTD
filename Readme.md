@@ -2,7 +2,7 @@
 
 ## 1 Introduction
 
-This is a description of the code used for the experiments described in the paper entitled *PrivSTD: Differentially Private Spatio-temporal Trajectory Density Data Publication*. The code is available at [4open.science](https://anonymous.4open.science/r/PrivAGS-E663/README.md).
+This is a description of the code used for the experiments described in the paper entitled *PrivSTD: Differentially Private Spatio-temporal Trajectory Density Data Publication*. The code is available at [4open.science](https://github.com/YeShuzhan/PrivSTD).
 
 We evaluated our differentially **Priv**ate **S**patio-temporal  **T**rajectory **D**ensity data publication method (PrivSTD) and other methods published recently, e.g., UG,AG,AHP,MWEM,PrivBayes,HB-Striped,VDR,  in terms of effectiveness and efficiency for spatio-temporal trajectory density data publication. The publications of comparing methods are shown in Table 1.
 
