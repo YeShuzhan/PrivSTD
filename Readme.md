@@ -35,7 +35,7 @@ Then, we compare our method with different methods, that are, AGM-Tri, AGM-FCL, 
 For example:
 
 ```
-python AG.py --dataset_name Email --alpha 3 --epsilon 3
+python
 ```
 
 Output:
@@ -51,7 +51,7 @@ Our methods can be run through a command with parameters including: a *dataset n
 For example:
 
 ```
-Python PrivAGS.py --dataset_name Email --alpha 3 --epsilon 3 --numbins 500
+Python 
 
 ```
 
