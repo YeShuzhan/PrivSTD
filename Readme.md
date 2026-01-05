@@ -175,5 +175,5 @@ After execution, the result datasets(.npy file) will be saved in the `/PrivSTD_c
 
 Additionally, when running the PrivSTD code, the query files generated for evaluation—including **Cell Count**, **Hotspot Query**, and **Forecasting Query**—will be stored in the `/PrivSTD_codes/codes/data/dataset_name` directory.
 
-It is also worth noting that the original VDR code has been publicly released at https://ddangchani.github.io/VDR/, and therefore is not described in detail here.
+It is also worth noting that the original VDR code has been publicly released at [https://ddangchani.github.io/VDR/](https://github.com/USC-InfoLab/VDR), and therefore is not described in detail here.
 
