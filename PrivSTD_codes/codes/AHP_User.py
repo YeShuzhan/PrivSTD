@@ -193,7 +193,7 @@ logger.info(f"time_interval: {(max_vals[2] - min_vals[2]) / 3600} hours")
 # ========== counts_true from D (for evaluation) ==========
 counts_true, test_samples = get_counts(
     config, db_full, min_vals, max_vals,
-    config["datasets"]["sample_size"], config["datasets"]["time_grid"]
+    config["datasets"]["cell_size"], config["datasets"]["time_grid"]
 )
 counts_true = counts_true[:, :, :config["datasets"]["time_grid"]]
 
@@ -209,7 +209,7 @@ logger.info(f"[ Refinement] gamma = |D|/|Ds| = {db_full.shape[0]}/{db.shape[0]} 
 # ========== counts_s from Ds (mechanism runs on Ds) ==========
 counts_s, _ = get_counts(
     config, db, min_vals, max_vals,
-    config["datasets"]["sample_size"], config["datasets"]["time_grid"]
+    config["datasets"]["cell_size"], config["datasets"]["time_grid"]
 )
 counts_s = counts_s[:, :, :config["datasets"]["time_grid"]]
 
@@ -247,7 +247,7 @@ np.save(datafile_full, db_full)
 
 fcast_qs, _h_mae_ref, _h_mape_ref = get_queries_for_forecasting_vdr_exact(
     datafile=datafile_full, max_val=max_val_vdr, min_vals=min_vals, max_vals=max_vals,
-    rho_xy=rho_xy, rho_t=rho_t, test_size=config["datasets"]["sample_size"],
+    rho_xy=rho_xy, rho_t=rho_t, test_size=config["datasets"]["cell_size"],
     H=counts_true, data_filled_slices=data_filled_slices, fh=3,
 )
 logger.info(f"[ ForecastQs] prepared={len(fcast_qs)} "
@@ -359,7 +359,7 @@ print("Running time:", traintime)
 logger.info("Saving released npy...")
 
 save_path = config["train"]["save_dir"] + "/{}/{}/eps_{}_userlevel_k{}".format(
-    config["datasets"]["name"], config["datasets"]["sample_size"], eps_total, k
+    config["datasets"]["name"], config["datasets"]["cell_size"], eps_total, k
 )
 os.makedirs(save_path, exist_ok=True)
 # min_cell_count_re = 999

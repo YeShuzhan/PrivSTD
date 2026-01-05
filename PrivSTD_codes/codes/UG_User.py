@@ -253,7 +253,7 @@ def main():
         db_full,
         min_vals,
         max_vals,
-        config["datasets"]["sample_size"],
+        config["datasets"]["cell_size"],
         config["datasets"]["time_grid"],
     )
     counts_true = counts_true[:, :, :config["datasets"]["time_grid"]]
@@ -317,7 +317,7 @@ def main():
         db_s,
         min_vals,
         max_vals,
-        config["datasets"]["sample_size"],
+        config["datasets"]["cell_size"],
         config["datasets"]["time_grid"],
     )
     counts_s_fine = counts_s_fine[:, :, :config["datasets"]["time_grid"]]
@@ -343,7 +343,7 @@ def main():
         max_vals=max_vals,
         rho_xy=rho_xy,
         rho_t=rho_t,
-        test_size=config["datasets"]["sample_size"],
+        test_size=config["datasets"]["cell_size"],
         H=counts_true,
         data_filled_slices=data_filled_slices,
         fh=forecast_horizon,
@@ -399,7 +399,7 @@ def main():
     #     min_forecast_smape = fsmape
     # Save (consistent with userlevel_PrivSDT_main style: save both uncalibrated and calibrated outputs)
     save_path = config["train"]["save_dir"] + "/{}/{}/eps_{}_userlevel_k{}".format(
-        config["datasets"]["name"], config["datasets"]["sample_size"], eps, k
+        config["datasets"]["name"], config["datasets"]["cell_size"], eps, k
     )
     os.makedirs(save_path, exist_ok=True)
     np.save(save_path + "/published_data_rec_UG_userlevel.npy", data_rec)

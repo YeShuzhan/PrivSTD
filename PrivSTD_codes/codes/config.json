@@ -2,7 +2,7 @@
 {
   "datasets": {
     "name": "4SQ_TKY",
-    "sample_size": 576,
+    "cell_size": 576,
     "time_grid": 24,
     "patch_size": 1,
     "truncate_size": 3

@@ -608,7 +608,7 @@ if __name__ == "__main__":
     logger.info(f'number of samples: {n}')
 
     counts, test_samples = get_counts(
-        config, db, min_vals, max_vals, config['datasets']['sample_size'], config['datasets']['time_grid']
+        config, db, min_vals, max_vals, config['datasets']['cell_size'], config['datasets']['time_grid']
     )
     counts = counts[:, :, :config['datasets']['time_grid']]
     logger.info(f'counts shape: {counts.shape}')
@@ -717,7 +717,7 @@ if __name__ == "__main__":
         max_vals=max_vals,
         rho_xy=rho_xy,
         rho_t=rho_t,
-        test_size=config['datasets']['sample_size'],
+        test_size=config['datasets']['cell_size'],
         H=counts,
         data_filled_slices=data_filled_slices,
         fh=3,
@@ -742,8 +742,8 @@ if __name__ == "__main__":
 
     os.makedirs('./data/' + config['datasets']['name'], exist_ok=True)
     np.save('./data/' + config['datasets']['name'] + f'/{eps}_train_h.npy', noisy_counts)
-    np.save('./data/' + config['datasets']['name'] + '/counts_'+str(config['datasets']['sample_size'])+'.npy', counts)
-    np.save('./data/' + config['datasets']['name'] + '/test_samples_'+str(config['datasets']['sample_size'])+'.npy', test_samples)
+    np.save('./data/' + config['datasets']['name'] + '/counts_'+str(config['datasets']['cell_size'])+'.npy', counts)
+    np.save('./data/' + config['datasets']['name'] + '/test_samples_'+str(config['datasets']['cell_size'])+'.npy', test_samples)
 
     forecast_data = {
         'queries': fcast_qs,
@@ -753,7 +753,7 @@ if __name__ == "__main__":
         'rho_xy': rho_xy,
         'rho_t': rho_t
     }
-    np.save('./data/' + config['datasets']['name'] + '/forecast_queries_'+str(config['datasets']['sample_size'])+'.npy', forecast_data)
+    np.save('./data/' + config['datasets']['name'] + '/forecast_queries_'+str(config['datasets']['cell_size'])+'.npy', forecast_data)
 
     hotspot_data = {
         'hot_levels': hot_levels,
@@ -762,7 +762,7 @@ if __name__ == "__main__":
         'H_slow_qs': H_slow_qs,
         'loc_ijk_arr': loc_ijk_arr
     }
-    np.save('./data/' + config['datasets']['name'] + '/hotspot_queries_'+str(config['datasets']['sample_size'])+'.npy', hotspot_data)
+    np.save('./data/' + config['datasets']['name'] + '/hotspot_queries_'+str(config['datasets']['cell_size'])+'.npy', hotspot_data)
 
 
     # ================== Training ==================
@@ -948,7 +948,7 @@ if __name__ == "__main__":
             if epoch %10 == 0 :
                 logger.info('Saving model...')
                 save_path = config['train']['save_dir'] + '/{}/{}/eps_{}'.format(
-                    config['datasets']['name'], config['datasets']['sample_size'], eps
+                    config['datasets']['name'], config['datasets']['cell_size'], eps
                 )
                 # res_str = 'Epoch:\t{}\tMAE:\t{}\tRE:\t{}'.format(
                 #     epoch, mae, re

@@ -41,7 +41,7 @@ logger.info(f'number of samples: {n}')
 
 counts, test_samples = get_counts(
     config, db, min_vals, max_vals,
-    config['datasets']['sample_size'],
+    config['datasets']['cell_size'],
     config['datasets']['time_grid']
 )
 counts = counts[:, :, :config['datasets']['time_grid']]
@@ -82,7 +82,7 @@ fcast_qs, _h_mae_ref, _h_mape_ref = get_queries_for_forecasting_vdr_exact(
     max_vals=max_vals,
     rho_xy=rho_xy,
     rho_t=rho_t,
-    test_size=config['datasets']['sample_size'],
+    test_size=config['datasets']['cell_size'],
     H=counts,
     data_filled_slices=data_filled_slices,
     fh=3,
@@ -337,7 +337,7 @@ logger.info(
 
 save_path = config['train']['save_dir'] + '/{}/{}/eps_{}'.format(
     config['datasets']['name'],
-    config['datasets']['sample_size'],
+    config['datasets']['cell_size'],
     eps
 )
 # if min_cell_count_re > re[0]:

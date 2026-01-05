@@ -272,7 +272,7 @@ logger.info(f"time_interval: {(max_vals[2] - min_vals[2]) / 3600} hours")
 
 # ========== counts_true from D (for evaluation) ==========
 counts_true, test_samples = get_counts(
-    config, db_full, min_vals, max_vals, config["datasets"]["sample_size"], config["datasets"]["time_grid"]
+    config, db_full, min_vals, max_vals, config["datasets"]["cell_size"], config["datasets"]["time_grid"]
 )
 counts_true = counts_true[:, :, :config["datasets"]["time_grid"]]
 H_, W_, T_ = counts_true.shape
@@ -429,7 +429,7 @@ logger.info(
 # As the ID baseline: add noise with the same total budget to Ds fine-grid counts_s directly (sensitivity=k),
 # then multiply by gamma, and compare with counts_true
 counts_s_fine, _ = get_counts(
-    config, db, min_vals, max_vals, config["datasets"]["sample_size"], config["datasets"]["time_grid"]
+    config, db, min_vals, max_vals, config["datasets"]["cell_size"], config["datasets"]["time_grid"]
 )
 counts_s_fine = counts_s_fine[:, :, :config["datasets"]["time_grid"]]
 sigma_total = gaussian_sigma(eps, delta_total, sensitivity=float(k))
@@ -456,7 +456,7 @@ fcast_qs, _h_mae_ref, _h_mape_ref = get_queries_for_forecasting_vdr_exact(
     max_vals=max_vals,
     rho_xy=rho_xy,
     rho_t=rho_t,
-    test_size=config["datasets"]["sample_size"],
+    test_size=config["datasets"]["cell_size"],
     H=counts_true,
     data_filled_slices=data_filled_slices,
     fh=3,
@@ -497,7 +497,7 @@ logger.info(f'Hotspot queries completed')
 
 # Save
 save_path = config["train"]["save_dir"] + "/{}/{}/eps_{}_userlevel_k{}".format(
-    config["datasets"]["name"], config["datasets"]["sample_size"], eps, k
+    config["datasets"]["name"], config["datasets"]["cell_size"], eps, k
 )
 os.makedirs(save_path, exist_ok=True)
 np.save(save_path + "/published_data_rec_AG_userlevel.npy", data_rec)

@@ -8,7 +8,7 @@ parser.add_argument('--lr', type=float, default=0.0005)
 parser.add_argument('--gpu', type=str, default='0')
 parser.add_argument('--img_size', type=int, default=128)
 parser.add_argument('--comment', type=str, default='')
-parser.add_argument('--sample_size', type=int, default=576)
+parser.add_argument('--cell_size', type=int, default=576)
 parser.add_argument('--window_size', type=int, default=8)
 parser.add_argument('--drop_rate', type=float, default=0.0)
 parser.add_argument('--epochs', type=int, default=1000)
@@ -33,7 +33,7 @@ if not args.file_config:
     config['train']['lr'] = args.lr
     config['train']['gpu'] = args.gpu
     config['net']['img_size'] = args.img_size
-    config['datasets']['sample_size'] = args.sample_size
+    config['datasets']['cell_size'] = args.cell_size
     config['datasets']['truncate_size'] = args.truncate_size
     config['train']['comment'] = args.comment
     config['net']['window_size'] = args.window_size

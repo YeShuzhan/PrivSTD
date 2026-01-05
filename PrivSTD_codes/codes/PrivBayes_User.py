@@ -178,7 +178,7 @@ logger.info(f'time_interval: {(max_vals[2] - min_vals[2]) / 3600} hours')
 
 # counts_true from full D (for eval/query)
 counts_true, test_samples = get_counts(
-    config, db_full, min_vals, max_vals, config['datasets']['sample_size'], config['datasets']['time_grid']
+    config, db_full, min_vals, max_vals, config['datasets']['cell_size'], config['datasets']['time_grid']
 )
 counts_true = counts_true[:, :, :config['datasets']['time_grid']]
 logger.info(f'counts_true shape: {counts_true.shape}')
@@ -193,7 +193,7 @@ logger.info(f'[Refinement] gamma = |D|/|Ds| = {db_full.shape[0]}/{db.shape[0]} =
 
 # counts_s from Ds (mechanism input)
 counts, _ = get_counts(
-    config, db, min_vals, max_vals, config['datasets']['sample_size'], config['datasets']['time_grid']
+    config, db, min_vals, max_vals, config['datasets']['cell_size'], config['datasets']['time_grid']
 )
 counts = counts[:, :, :config['datasets']['time_grid']]
 logger.info(f'counts(Ds) shape: {counts.shape}')
@@ -229,7 +229,7 @@ fcast_qs, _h_mae_ref, _h_mape_ref = get_queries_for_forecasting_vdr_exact(
     max_vals=max_vals,
     rho_xy=rho_xy,
     rho_t=rho_t,
-    test_size=config['datasets']['sample_size'],
+    test_size=config['datasets']['cell_size'],
     H=counts_true,
     data_filled_slices=data_filled_slices,
     fh=3,
@@ -487,7 +487,7 @@ noisy_cal = np.maximum(gamma * noisy_counts, 0.0)
 # ===== save =====
 save_path = config['train']['save_dir'] + '/{}/{}/eps_{}_userlevel_k{}'.format(
     config['datasets']['name'],
-    config['datasets']['sample_size'],
+    config['datasets']['cell_size'],
     eps,
     k
 )

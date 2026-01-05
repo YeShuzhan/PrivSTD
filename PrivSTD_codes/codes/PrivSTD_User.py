@@ -510,7 +510,7 @@ def main():
         db_full,
         min_vals,
         max_vals,
-        config["datasets"]["sample_size"],
+        config["datasets"]["cell_size"],
         config["datasets"]["time_grid"],
     )
     counts_true = counts_true[:, :, :config["datasets"]["time_grid"]]
@@ -530,7 +530,7 @@ def main():
         db_s,
         min_vals,
         max_vals,
-        config["datasets"]["sample_size"],
+        config["datasets"]["cell_size"],
         config["datasets"]["time_grid"],
     )
     counts_s = counts_s[:, :, :config["datasets"]["time_grid"]]
@@ -583,7 +583,7 @@ def main():
         max_vals=max_vals,
         rho_xy=rho_xy,
         rho_t=rho_t,
-        test_size=config["datasets"]["sample_size"],
+        test_size=config["datasets"]["cell_size"],
         H=counts_true,
         data_filled_slices=data_filled_slices,
         fh=forecast_horizon,
@@ -607,8 +607,8 @@ def main():
 
     os.makedirs("./data/" + name, exist_ok=True)
     np.save(f"./data/{name}/{eps}_train_h_userlevel.npy", noisy_counts)
-    np.save(f"./data/{name}/counts_{config['datasets']['sample_size']}_userlevel.npy", counts_true)
-    np.save(f"./data/{name}/test_samples_{config['datasets']['sample_size']}_userlevel.npy", test_samples)
+    np.save(f"./data/{name}/counts_{config['datasets']['cell_size']}_userlevel.npy", counts_true)
+    np.save(f"./data/{name}/test_samples_{config['datasets']['cell_size']}_userlevel.npy", test_samples)
 
     forecast_data = {
         "queries": fcast_qs,
@@ -621,7 +621,7 @@ def main():
         "k": k,
     }
     np.save(
-        f"./data/{name}/forecast_queries_{config['datasets']['sample_size']}_userlevel.npy",
+        f"./data/{name}/forecast_queries_{config['datasets']['cell_size']}_userlevel.npy",
         forecast_data,
     )
 
@@ -635,7 +635,7 @@ def main():
         "k": k,
     }
     np.save(
-        f"./data/{name}/hotspot_queries_{config['datasets']['sample_size']}_userlevel.npy",
+        f"./data/{name}/hotspot_queries_{config['datasets']['cell_size']}_userlevel.npy",
         hotspot_data,
     )
 
@@ -856,7 +856,7 @@ def main():
 
 
                 save_path = config["train"]["save_dir"] + "/{}/{}/eps_{}_userlevel_k{}".format(
-                    config["datasets"]["name"], config["datasets"]["sample_size"], eps, k
+                    config["datasets"]["name"], config["datasets"]["cell_size"], eps, k
                 )
                 # res_str = 'Epoch:\t{}\tMAE:\t{}\tRE:\t{}'.format(
                 #     epoch, mae, re

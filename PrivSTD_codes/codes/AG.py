@@ -113,7 +113,7 @@ logger.info(f'time_interval: {(max_vals[2] - min_vals[2]) / 3600} hours')
 logger.info(f'number of samples: {n}')
 
 counts, test_samples = get_counts(
-    config, db, min_vals, max_vals, config['datasets']['sample_size'], config['datasets']['time_grid']
+    config, db, min_vals, max_vals, config['datasets']['cell_size'], config['datasets']['time_grid']
 )
 counts = counts[:, :, :config['datasets']['time_grid']]
 H_, W_, T_ = counts.shape
@@ -275,7 +275,7 @@ datafile = './data/' + config['datasets']['name'] + '.npy'
 
 fcast_qs, _h_mae_ref, _h_mape_ref = get_queries_for_forecasting_vdr_exact(
     datafile=datafile, max_val=max_val_vdr, min_vals=min_vals, max_vals=max_vals,
-    rho_xy=rho_xy, rho_t=rho_t, test_size=config['datasets']['sample_size'],
+    rho_xy=rho_xy, rho_t=rho_t, test_size=config['datasets']['cell_size'],
     H=counts, data_filled_slices=data_filled_slices, fh=3,
 )
 logger.info(f'Forecast queries completed')
@@ -311,7 +311,7 @@ logger.info(f'Hotspot queries completed')
 # logger.info(f"[Forecast] fh={forecast_horizon} n={n_eff} sMAPE={fsmape:.4f}")
 # Save
 save_path = config['train']['save_dir'] + '/{}/{}/eps_{}'.format(
-    config['datasets']['name'], config['datasets']['sample_size'], eps
+    config['datasets']['name'], config['datasets']['cell_size'], eps
 )
 os.makedirs(save_path, exist_ok=True)
 # min_cell_count_re = 999
