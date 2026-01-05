@@ -31,11 +31,11 @@ Please download the requirements.txt and use the following code to install the r
 ```
 pip install -r requirements.txt
 ```
-Then, we compare our method with different methods, that are, AGM-Tri, AGM-FCL, CPGM-DP.Before running with the programs, you need to download the datasets and put the code in the same directory with the datasets. These comparing methods can be run through a command with parameters including: a *dataset name*, a *alpha*, a *epsilon*. To run these algorithms, we need to run the following commands separately:
+Then, we compare our method with different methods, that are, AGM-Tri, AGM-FCL, CPGM-DP.Before running with the programs, you need to download the datasets and put the code in the same directory with the datasets. These comparing methods can be run through a command with parameters including: a *method name*, a *model name*, a *epsilon*, a *dataset name*, a *alpha*, a *learning rate*,a *sample_size*. To run these algorithms, we need to run the following commands separately:
 For example:
 
 ```
-python
+python run.py HB-Striped --model HB-Striped --eps 0.5 --dataset CABS_SF --alpha 1.0 --lr 0.001 --sample_size 384 --truncate_size 3 --epoch 20
 ```
 
 Output:
