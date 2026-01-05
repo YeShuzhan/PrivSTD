@@ -40,7 +40,7 @@ db, min_vals, max_vals, n = read_dataset(config)
 delta = 1.0 / (n ** 2)
 
 logger.info(f'max_lon: {max_vals[0]}, min_lon: {min_vals[0]}, max_lat: {max_vals[1]}, min_lat: {min_vals[1]}')
-logger.info(f'time_interval: {(max_vals[2] - min_vals[2]) / 3600} hours')
+
 logger.info(f'number of samples: {n}')
 
 counts, test_samples = get_counts(
