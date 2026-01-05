@@ -24,7 +24,7 @@ The experiments have been run on a Linux server with an Intel Xeon 2.1GHz CPU, 1
 
 ## 3 DATASETS
 
-Our experiment involves three open real world dataset popularly deployed by existing works. Each dataset represents a spatio-temporal tracjectory density data.
+Our experiment involves three open real world dataset popularly deployed by existing works. Each dataset represents a spatio-temporal tracjectory density data. All datasets used in this project are stored in the `PrivSTD_codes/data` directory of this GitHub repository.
 
 ## 4 Usage
 Please download the requirements.txt and use the following code to install the required Python environment:
