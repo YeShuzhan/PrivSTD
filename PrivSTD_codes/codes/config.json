@@ -1,0 +1,64 @@
+
+{
+  "datasets": {
+    "name": "4SQ_TKY",
+    "sample_size": 576,
+    "time_grid": 24,
+    "patch_size": 1,
+    "truncate_size": 3
+  },
+
+  "net": {
+    "img_size": 128,
+    "window_size": 8,
+    "in_chans": 1,
+    "embed_dim": 180,
+    "depth": [6,6,6,6],
+    "num_heads": 4,
+    "mlp_ratio": 2,
+    "qkv_bias": true,
+    "drop_rate": 0.0,
+    "attn_drop_rate": 0.0,
+    "resi_connection": "1conv"
+  },
+
+  "train": {
+    "model": "PrivSTD",
+    "loss_type": "l2",
+    "loss_weight": 1.0,
+    "epochs": 10,
+    "lr": 0.0005,
+    "alpha": 0.5,
+    "batch_size": 3,
+    "eval_freq": 10,
+    "save_dir": "./results",
+    "gpu": "0",
+    "comment": "",
+    "reg_beta":0.1,
+    "window_size":5,
+    "data_norm": false,
+    "gsure_weight": 0.05,
+    "beta0": 1.0,
+    "eta_min": 1e-6,
+    "eta_max": 5e-2,
+    "v_floor": 1e-10,
+    "Lstar_gamma": 0.1
+  },
+
+  "privacy": {
+    "eps": 0.5,
+    "scheme":"DCT",
+    "n_bands":4
+  },
+
+  "test": {
+    "test_size": 20000,
+    "sm": [20]
+  },
+
+  "path": {
+    "pretrain": null
+  }
+  
+}
+
