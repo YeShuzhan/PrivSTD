@@ -4,7 +4,7 @@
 
 This is a description of the code used for the experiments described in the paper entitled *PrivSTD: Differentially Private Spatio-temporal Trajectory Density Data Publication*. The code is available at [4open.science](https://github.com/YeShuzhan/PrivSTD).
 
-We evaluated our differentially **Priv**ate **S**patio-temporal  **T**rajectory **D**ensity data publication method (PrivSTD) and other methods published recently, e.g., UG,AG,AHP,MWEM,PrivBayes,HB-Striped,VDR,  in terms of effectiveness and efficiency for spatio-temporal trajectory density data publication. The publications of comparing methods are shown in Table 1.
+We evaluated our differentially **Priv**ate **S**patio-temporal  **T**rajectory **D**ensity data publication method (PrivSTD) and other methods published recently, e.g., UG, AG, AHP, MWEM, PrivBayes, HB-Striped, VDR,  in terms of effectiveness and efficiency for spatio-temporal trajectory density data publication. The publications of comparing methods are shown in Table 1.
 
 **Table** **1**: The original papers information of community search algorithms
 
@@ -31,7 +31,7 @@ Please download the requirements.txt and use the following code to install the r
 ```
 pip install -r requirements.txt
 ```
-Then, we compare our method with different methods, that are, AGM-Tri, AGM-FCL, CPGM-DP.Before running with the programs, you need to download the datasets and put the code in the same directory with the datasets. These comparing methods can be run through a command with parameters including: a *method name*, a *model name*, a *epsilon*, a *dataset name*, a *alpha*, a *learning rate*,a *cell_size*,a *truncate size* and a *epoch*. Some of the parameters listed here may not be required by certain methods, but they do not affect the execution. To run these algorithms, we need to run the following commands separately:
+Then, we compare our method with different methods, that are, UG, AG, AHP, MWEM, PrivBayes, HB-Striped, VDR.Before running with the programs, you need to download the datasets and put the code in the same directory with the datasets. These comparing methods can be run through a command with parameters including: a *method name*, a *model name*, a *epsilon*, a *dataset name*, a *alpha*, a *learning rate*,a *cell_size*,a *truncate size* and a *epoch*. Some of the parameters listed here may not be required by certain methods, but they do not affect the execution. To run these algorithms, we need to run the following commands separately:
 For example:
 
 ```
